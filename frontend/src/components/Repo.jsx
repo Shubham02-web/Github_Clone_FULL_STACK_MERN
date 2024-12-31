@@ -18,7 +18,7 @@ const Repo = () => {
         <span className="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center gap-1">
           <FaRegStar /> 167
         </span>
-        <span className=" bg-purple-100 text-pur text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center gap-1">
+        <span className=" bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center gap-1">
           <FaCodeFork /> 25
         </span>
         <span className="cursor-pointer bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center gap-1">
