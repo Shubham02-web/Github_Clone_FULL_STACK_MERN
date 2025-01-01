@@ -7,22 +7,25 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 import { TfiThought } from "react-icons/tfi";
 import { FaEye } from "react-icons/fa";
-const ProfileInfo = () => {
-  const userProfile = {
-    avatar_url:
-      "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745",
-    bio: "👨🏻‍💻👨🏻‍💻👨🏻‍💻",
-    email: "johndoe@gmail.com",
-    followers: 100,
-    following: 200,
-    html_url: "https://github.com/burakorkmez",
-    location: "Somewhere,  Earth",
-    name: "john Doe",
-    public_gists: 100,
-    public_repos: 100,
-    twitter_username: "johndoe",
-    login: "johndoe",
-  };
+import { formatMemberSince } from "../utils/functions";
+const ProfileInfo = ({ userProfile }) => {
+  // const userProfile = {
+  //   avatar_url:
+  //     "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745",
+  //   bio: "👨🏻‍💻👨🏻‍💻👨🏻‍💻",
+  //   email: "johndoe@gmail.com",
+  //   followers: 100,
+  //   following: 200,
+  //   html_url: "https://github.com/burakorkmez",
+  //   location: "Somewhere,  Earth",
+  //   name: "john Doe",
+  //   public_gists: 100,
+  //   public_repos: 100,
+  //   twitter_username: "johndoe",
+  //   login: "johndoe",
+  // };
+
+  const memberSince = formatMemberSince(userProfile?.created_at);
   return (
     <div className="lg:w-1/3 w-full flex flex-col gap-2 md:sticky md:top-10">
       <div className="bg-glass hover:bg-gray-600/10 rounded-lg p-4">
@@ -36,7 +39,7 @@ const ProfileInfo = () => {
           </a>
           <div className="flex gap-2 items-center flex-col">
             <a
-              href={userProfile.html_url}
+              href={userProfile?.html_url}
               target="_blank"
               rel="noreferrer"
               className="bg-glass hover:bg-gray-600/10 font-medium w-full text-xs p-2 rounded-md cursor-pointer border border-blue-400 flex items-center gap-2"
@@ -71,7 +74,7 @@ const ProfileInfo = () => {
         ) : null}
         <div className="my-2">
           <p className="text-gray-600 font-bold text-sm">Member Since</p>
-          <p className="">21 sep,2023</p>
+          <p className="">{memberSince}</p>
         </div>
         {userProfile?.email && (
           <div className="my-2">
@@ -96,7 +99,7 @@ const ProfileInfo = () => {
           </div>
           <div className="flex items-center gap-2 hover:bg-gray-600/10 bg-glass rounded-lg p-2 flex-1 min-w-24">
             <RiUserFollowLine className="w-5 h-5 text-blue-800" />
-            <p className="text-xs">Following: {userProfile.following}</p>
+            <p className="text-xs">Following: {userProfile?.following}</p>
           </div>
 
           <div className="flex items-center gap-2 hover:bg-gray-600/10 bg-glass rounded-lg p-2 flex-1 min-w-24">

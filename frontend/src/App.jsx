@@ -5,6 +5,7 @@ import SignupPage from "./pages/SignupPage.jsx";
 import ExplorePage from "./pages/ExplorePage.jsx";
 import LikesPage from "./pages/LikesPage.jsx";
 import Sidebar from "./components/Sidebar.jsx";
+import Toaster from "react-hot-toast";
 function App() {
   return (
     <div className="flex ">
@@ -17,6 +18,7 @@ function App() {
           <Route path="/explore" element={<ExplorePage />}></Route>
           <Route path="/likes" element={<LikesPage />}></Route>
         </Routes>
+        <Toaster />
       </div>
     </div>
   );
