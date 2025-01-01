@@ -9,7 +9,7 @@ const HomePage = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [sortType, setSortType] = useState("forks");
+  const [sortType, setSortType] = useState("recent");
 
   const getUserProfileAndRepos = useCallback(
     async (username = "Shubham02-web") => {
@@ -28,10 +28,10 @@ const HomePage = () => {
 
         const repoRes = await fetch(userProfile.repos_url);
         const repos = await repoRes.json();
-        setRepos(repos);
-        console.log("userProfile:", userProfile);
-        console.log("repos:", repos);
 
+        repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+        setRepos(repos);
         return { userProfile, repos };
       } catch (error) {
         toast.error(error.message);
@@ -56,6 +56,7 @@ const HomePage = () => {
     setUserProfile(userProfile);
     setRepos(repos);
     setLoading(false);
+    setSortType("recent");
   };
 
   const onSort = (sortType) => {
