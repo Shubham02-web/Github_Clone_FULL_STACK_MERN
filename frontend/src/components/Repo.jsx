@@ -1,8 +1,19 @@
+import { toast } from "react-hot-toast";
 import { FaCodeBranch, FaCodeFork, FaCopy, FaRegStar } from "react-icons/fa6";
 import { formatDate } from "../utils/functions";
 import { PROGRAMING_LANGUAGES } from "../utils/constants";
 const Repo = ({ repo }) => {
   const formatedDate = formatDate(repo.created_at);
+
+  const handleCloneClick = async (repo) => {
+    try {
+      await navigator.clipboard.writeText(repo.clone_url);
+      toast.success("Successfully URL Copied");
+      // eslint-disable-next-line no-unused-vars
+    } catch (error) {
+      toast.error("Clipboard write failed..");
+    }
+  };
   return (
     <li className="mb-10 ms-7">
       <span className="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white">
@@ -23,7 +34,10 @@ const Repo = ({ repo }) => {
         <span className=" bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center gap-1">
           <FaCodeFork /> {repo.forks_count}
         </span>
-        <span className="cursor-pointer bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center gap-1">
+        <span
+          onClick={() => handleCloneClick(repo)}
+          className="cursor-pointer bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center gap-1"
+        >
           <FaCopy />
           Clone
         </span>

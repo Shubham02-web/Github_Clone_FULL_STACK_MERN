@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
@@ -5,7 +6,6 @@ import SignupPage from "./pages/SignupPage.jsx";
 import ExplorePage from "./pages/ExplorePage.jsx";
 import LikesPage from "./pages/LikesPage.jsx";
 import Sidebar from "./components/Sidebar.jsx";
-import Toaster from "react-hot-toast";
 function App() {
   return (
     <div className="flex ">
@@ -18,8 +18,8 @@ function App() {
           <Route path="/explore" element={<ExplorePage />}></Route>
           <Route path="/likes" element={<LikesPage />}></Route>
         </Routes>
-        <Toaster />
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 }
