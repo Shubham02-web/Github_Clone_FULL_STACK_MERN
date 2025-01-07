@@ -15,8 +15,9 @@ const HomePage = () => {
     async (username = "Shubham02-web") => {
       setLoading(true);
       try {
-        const res = await fetch(`/api/v1/profile/${username}`);
-
+        const res = await fetch(
+          `http://localhost:5050/api/v1/profile/${username}`
+        );
         const { repos, userProfile } = await res.json();
         repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 

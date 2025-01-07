@@ -3,14 +3,14 @@ export const getUserProfileAndRepos = async (req, res) => {
   try {
     const userRes = await fetch(`https://api.github.com/users/${username}`, {
       headers: {
-        authorization: `token ${process.env.GITHUB_API_KEY}`,
+        authorization: `token  ${process.env.GITHUB_API_KEY}`,
       },
     });
     const userProfile = await userRes.json();
 
     const repoRes = await fetch(userProfile.repos_url, {
       headers: {
-        authorization: `token ${process.env.GITHUB_API_KEY}`,
+        authorization: `token  ${process.env.GITHUB_API_KEY}`,
       },
     });
     const repos = await repoRes.json();
@@ -19,6 +19,7 @@ export const getUserProfileAndRepos = async (req, res) => {
       repos,
     });
   } catch (error) {
+    console.log(error.message);
     res.status(500).json({ error: error.message });
   }
 };
