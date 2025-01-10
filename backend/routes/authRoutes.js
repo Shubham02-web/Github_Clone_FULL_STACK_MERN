@@ -1,6 +1,8 @@
 import express from "express";
 import passport from "passport";
+import dotenv from "dotenv";
 
+dotenv.config();
 const Router = express.Router();
 
 Router.get(
@@ -16,5 +18,19 @@ Router.get(
     res.redirect(process.env.CLIENT_BASE_URL);
   }
 );
+
+Router.get("/check", (req, res) => {
+  if (req.isAuthenticated()) {
+    res.send({ user: req.user });
+  } else {
+    res.send({ user: null });
+  }
+});
+
+Router.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    res.json({ message: "LogOut" });
+  });
+});
 
 export default Router;

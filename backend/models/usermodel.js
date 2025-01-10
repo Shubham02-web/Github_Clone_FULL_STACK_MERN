@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    avatarURL: {
+    avatarUrl: {
       type: String,
     },
     likedProfiles: {
@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema(
           type: String,
           required: true,
         },
-        avatarURL: {
+        avatarUrl: {
           type: String,
         },
         likedDate: {
@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema(
       },
     ],
   },
-  { timestamps: tru }
+  { timestamps: true }
 );
 
 const User = mongoose.model("User", userSchema);

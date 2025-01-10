@@ -1,9 +1,7 @@
 import { FaGithub, FaUnlockAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { handleLoginWithGithub } from "../lib/function";
 const SignupPage = () => {
-  const handleLoginWithGithub = () => {
-    window.open("http://localhost:5050/api/v1/auth/github", "_self");
-  };
   return (
     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
       <div className="w-full rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 hover:bg-gray-600/10 bg-glass">
