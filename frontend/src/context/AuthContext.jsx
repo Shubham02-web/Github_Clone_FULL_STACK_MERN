@@ -10,9 +10,10 @@ export const useAuthContext = () => {
 
 export const AuthContextProvider = ({ children }) => {
   const [authUser, setAuthUser] = useState(null);
-  // const [loading,setLoading] =useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const checkUserLoggedIn = async () => {
       try {
         const res = await fetch("http://localhost:5050/api/v1/auth/check", {
@@ -22,13 +23,15 @@ export const AuthContextProvider = ({ children }) => {
         setAuthUser(data.user);
       } catch (error) {
         toast.error(error.message);
+      } finally {
+        setLoading(false);
       }
     };
     checkUserLoggedIn();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ authUser, setAuthUser }}>
+    <AuthContext.Provider value={{ authUser, setAuthUser, loading }}>
       {children}
     </AuthContext.Provider>
   );

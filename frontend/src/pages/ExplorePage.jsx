@@ -11,7 +11,12 @@ const ExplorePage = () => {
     setLoading(true);
     setRepos([]);
     try {
-      const res = await fetch("http://localhost:5050/api/v1/repos/" + language);
+      const res = await fetch(
+        "http://localhost:5050/api/v1/repos/" + language,
+        {
+          credentials: "include",
+        }
+      );
       const { repos } = await res.json();
       setRepos(repos);
       setSelectedLanguage(language);

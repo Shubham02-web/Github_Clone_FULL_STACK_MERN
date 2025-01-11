@@ -8,8 +8,10 @@ import LikesPage from "./pages/LikesPage.jsx";
 import Sidebar from "./components/Sidebar.jsx";
 import { useAuthContext } from "./context/AuthContext.jsx";
 function App() {
-  const { authUser } = useAuthContext();
+  const { authUser, loading } = useAuthContext();
   console.log("Authenticated User : ", authUser);
+
+  if (loading) return null;
   return (
     <div className="flex ">
       <Sidebar />
